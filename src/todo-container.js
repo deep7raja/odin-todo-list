@@ -5,7 +5,6 @@ export function createTodoContainer(todoList){
     todoContainer.classList.add('todo-card-container');
     todoList.forEach(todo => {
         todoContainer.appendChild(createTodoCard(todo));
-        console.log(todo);
     });
     return todoContainer;
 }
