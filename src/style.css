@@ -1,11 +1,22 @@
 :root{
-    --color-todo-title: blue;
+    /* --color-todo-title: blue;
     --color-todo-description: white;
-    --color-todo-footer: green;
+    --color-todo-footer: green; */
+
+    --header-height: 50px;
+
+    --color1: #264653;
+    --color2: #2a9d8f;
+    --color3: #e9c46a;
+    --color4: #f4a261;
+    --color5: #e76f51;
 }
 
-body{
+body, html{
     background-color: rgb(150, 166, 180);
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* ------------------------ Card Design ------------------------  */
@@ -15,6 +26,7 @@ body{
     border: 2px solid black;
     border-radius: 20px;
     overflow: hidden;
+    height: 150px;
 }
 .todo-card>div{
     padding: 10px;
@@ -38,8 +50,34 @@ body{
 
 }
 
+/* ------------------------ header Design ------------------------  */
+.header{
+    background-color: var(--color1);
+    display: flex;
+    justify-content: space-around;
+    height: var(--header-height);
+}
+
+/* ------------------------ content Design ------------------------  */
+.content{
+    display: flex;
+    width: 100%;
+}
+
+/* ------------------------ sidebar Design ------------------------  */
+.sidebar{
+    width: 10%;
+    overflow: auto;
+    background-color: var(--color2);
+}
+
 /* ------------------------ container Design ------------------------  */
 .todo-card-container{
+    background-color: var(--color3);
+    width: 90%;
+    overflow-y: auto;
+    height: calc(100vh - var(--header-height));
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: space-around;
