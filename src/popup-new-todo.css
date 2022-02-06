@@ -11,6 +11,7 @@
     justify-content: space-evenly;
     gap: 20px;
     padding: 20px;
+    visibility: hidden;
 }
 .popup-field{
     display: flex;
