@@ -1,13 +1,27 @@
+:root{
+    --color-todo-title: blue;
+    --color-todo-description: white;
+    --color-todo-footer: green;
+}
+
 body{
     background-color: rgb(150, 166, 180);
 }
 
 /* ------------------------ Card Design ------------------------  */
 .todo-card{
-
+    background-color: var(--color-todo-description);
+    font-size: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.todo-card>div{
+    padding: 10px;
 }
 .todo-title{
-
+    background-color: var(--color-todo-title);
+    font-weight: bold;
 }
 .todo-description{
 
@@ -15,10 +29,19 @@ body{
 .todo-due-color{
     display: flex;
     justify-content: space-between;
+    background-color: var(--color-todo-footer);
 }
 .todo-due{
 
 }
 .todo-color{
 
+}
+
+/* ------------------------ container Design ------------------------  */
+.todo-card-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: space-around;
+    gap: 15px;
 }
