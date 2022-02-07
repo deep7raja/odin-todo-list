@@ -3,7 +3,7 @@ import TodoItem from "./todo-item";
 const form = document.querySelector('.popup-new-todo');
 
 export function getNewTodo(){
-    form.style.visibility = 'hidden';
+    cancelNewTodo();
     return new TodoItem(
         document.querySelector('#in-todo-title').value,
         document.querySelector('#in-todo-description').value,
@@ -11,6 +11,12 @@ export function getNewTodo(){
         document.querySelector('#in-todo-priority').value,
         document.querySelector('#in-todo-project').value
     );
+}
+
+export function cancelNewTodo(){
+    form.style.visibility = 'hidden';
+    document.querySelector('#in-todo-title').value = '';
+    document.querySelector('#in-todo-description').value = '';
 }
 
 export function createNewTodoForm(projectList, currentProject){

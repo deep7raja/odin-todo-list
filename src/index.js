@@ -1,8 +1,7 @@
 import './style.css';
 import './popup-new-todo.css'
-import TodoItem from './todo-item.js';
-import { updateTodoContainer, appendtoTodoContainer } from './todo-container';
-import {getNewTodo, createNewTodoForm} from './get-new-todo';
+import { updateTodoContainer } from './todo-container';
+import {getNewTodo, createNewTodoForm, cancelNewTodo} from './get-new-todo';
 import { initSidebar } from './sidebar';
 import Project from './project-item';
 import { updateHeaderProject } from './header';
@@ -16,23 +15,7 @@ else{
     projectList = [new Project('default')];
 }
 
-// const projectList = [new Project('default'), new Project('project1'), new Project('project2'), new Project('project3'), new Project('project4')]
 let currentProject = projectList[0];
-
-// for(let i=0; i<3; ++i){
-//     projectList[0].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
-// }
-// for(let i=0; i<6; ++i){
-//     projectList[1].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
-// }
-// for(let i=0; i<10; ++i){
-//     projectList[2].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
-// }
-// for(let i=0; i<20; ++i){
-//     projectList[3].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
-// }
-
-// localStorage.setItem('projectList', JSON.stringify(projectList));
 
 updateTodoContainer(currentProject.todos)
 
@@ -51,6 +34,9 @@ document.querySelector('#btn-submit-todo').onclick = ()=>{
     updateHeaderProject(currentProject);
     localStorage.setItem('projectList', JSON.stringify(projectList));
     // appendtoTodoContainer(newTodo, todoContainer);
+}
+document.querySelector('#btn-cancel-todo-add').onclick = ()=>{
+    cancelNewTodo();
 }
 
 document.querySelector('#btn-new-todo').onclick=()=>{
