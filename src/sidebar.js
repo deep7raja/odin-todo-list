@@ -16,6 +16,7 @@ export function initSidebar(projectList, currentProject){
         updateHeaderProject(currentProject);
         updateTodoContainer(currentProject.todos)
         fillSidebar(projectList);
+        localStorage.setItem('projectList', JSON.stringify(projectList));
     };
     fillSidebar(projectList);
 }

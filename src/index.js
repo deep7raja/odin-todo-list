@@ -7,24 +7,32 @@ import { initSidebar } from './sidebar';
 import Project from './project-item';
 import { updateHeaderProject } from './header';
 
-const projectList = [new Project('default'), new Project('project1'), new Project('project2'), new Project('project3'), new Project('project4')]
+let projectList;
+let projectListJSON = localStorage.getItem('projectList');
+if(projectListJSON){
+    projectList = JSON.parse(projectListJSON);
+}
+else{
+    projectList = [new Project('default')];
+}
+
+// const projectList = [new Project('default'), new Project('project1'), new Project('project2'), new Project('project3'), new Project('project4')]
 let currentProject = projectList[0];
 
-const body = document.querySelector('body');
+// for(let i=0; i<3; ++i){
+//     projectList[0].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
+// }
+// for(let i=0; i<6; ++i){
+//     projectList[1].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
+// }
+// for(let i=0; i<10; ++i){
+//     projectList[2].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
+// }
+// for(let i=0; i<20; ++i){
+//     projectList[3].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
+// }
 
-
-for(let i=0; i<3; ++i){
-    projectList[0].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
-}
-for(let i=0; i<6; ++i){
-    projectList[1].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
-}
-for(let i=0; i<10; ++i){
-    projectList[2].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
-}
-for(let i=0; i<20; ++i){
-    projectList[3].todos.push(new TodoItem('hello', 'there', 'general', 'kenobi'));
-}
+// localStorage.setItem('projectList', JSON.stringify(projectList));
 
 updateTodoContainer(currentProject.todos)
 
@@ -41,6 +49,7 @@ document.querySelector('#btn-submit-todo').onclick = ()=>{
     currentProject.todos.unshift(newTodo);
     updateTodoContainer(currentProject.todos);
     updateHeaderProject(currentProject);
+    localStorage.setItem('projectList', JSON.stringify(projectList));
     // appendtoTodoContainer(newTodo, todoContainer);
 }
 
