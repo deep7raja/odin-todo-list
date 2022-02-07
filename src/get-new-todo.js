@@ -14,6 +14,11 @@ export function getNewTodo(){
 }
 
 export function createNewTodoForm(projectList, currentProject){
+    let projectOptions = document.querySelector('#in-todo-project');
+    let numOptions = projectOptions.children.length;
+    for(let i=0; i<numOptions-1;++i){
+        projectOptions.removeChild(projectOptions.lastChild);
+    }
     projectList.forEach(project =>{
         let newOption = document.createElement('option');
         newOption.value = project.name;
@@ -21,7 +26,7 @@ export function createNewTodoForm(projectList, currentProject){
         if(project.name === currentProject.name){
             newOption.selected = 'selected';
         }
-        document.querySelector('#in-todo-project').appendChild(newOption);
+        projectOptions.appendChild(newOption);
     });
 
     form.style.visibility = 'visible';

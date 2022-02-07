@@ -14,6 +14,7 @@ export function initSidebar(projectList, currentProject){
         projectList.unshift(new Project(inProjectName.value));
         currentProject = projectList[0];
         updateHeaderProject(currentProject);
+        updateTodoContainer(currentProject.todos)
         fillSidebar(projectList);
     };
     fillSidebar(projectList);

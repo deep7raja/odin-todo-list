@@ -5,8 +5,9 @@ import { updateTodoContainer, appendtoTodoContainer } from './todo-container';
 import {getNewTodo, createNewTodoForm} from './get-new-todo';
 import { initSidebar } from './sidebar';
 import Project from './project-item';
+import { updateHeaderProject } from './header';
 
-const projectList = [new Project('project1'), new Project('project2'), new Project('project3'), new Project('project4')]
+const projectList = [new Project('default'), new Project('project1'), new Project('project2'), new Project('project3'), new Project('project4')]
 let currentProject = projectList[0];
 
 const body = document.querySelector('body');
@@ -31,7 +32,16 @@ initSidebar(projectList, currentProject);
 
 
 document.querySelector('#btn-submit-todo').onclick = ()=>{
-    appendtoTodoContainer(getNewTodo(), todoContainer);
+    let newTodo = getNewTodo();
+    projectList.forEach(project =>{
+        if(project.name === newTodo.project){
+            currentProject = project;
+        }
+    });
+    currentProject.todos.unshift(newTodo);
+    updateTodoContainer(currentProject.todos);
+    updateHeaderProject(currentProject);
+    // appendtoTodoContainer(newTodo, todoContainer);
 }
 
 document.querySelector('#btn-new-todo').onclick=()=>{
