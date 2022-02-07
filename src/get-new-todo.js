@@ -16,9 +16,9 @@ export function getNewTodo(){
 export function createNewTodoForm(projectList, currentProject){
     projectList.forEach(project =>{
         let newOption = document.createElement('option');
-        newOption.value = project;
-        newOption.innerHTML = project;
-        if(project === currentProject){
+        newOption.value = project.name;
+        newOption.innerHTML = project.name;
+        if(project.name === currentProject.name){
             newOption.selected = 'selected';
         }
         document.querySelector('#in-todo-project').appendChild(newOption);

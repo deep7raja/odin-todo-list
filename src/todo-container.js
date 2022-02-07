@@ -1,12 +1,16 @@
 import createTodoCard from "./todo-card";
 
-export function createTodoContainer(todoList){
+export function updateTodoContainer(todoList){
+    const content = document.querySelector('.content');
     const todoContainer = document.createElement('div');
     todoContainer.classList.add('todo-card-container');
     todoList.forEach(todo => {
         todoContainer.appendChild(createTodoCard(todo));
     });
-    return todoContainer;
+    if(content.childNodes.length>1){
+        content.removeChild(content.lastChild);
+    }
+    content.appendChild(todoContainer);
 }
 
 export function appendtoTodoContainer(todo, todoContainer){

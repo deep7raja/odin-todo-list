@@ -1,4 +1,8 @@
-export function initSidebar(projectList){
+import { updateHeaderProject } from "./header";
+import Project from "./project-item";
+import { updateTodoContainer } from "./todo-container";
+
+export function initSidebar(projectList, currentProject){
     const form = document.querySelector('.new-project-form');
     const btnNewProject = document.querySelector('#btn-new-project');
     const btnSubmitProject = document.querySelector('#btn-new-project-submit');
@@ -7,7 +11,9 @@ export function initSidebar(projectList){
     btnNewProject.onclick = ()=>{form.style.display = 'flex';};
     btnSubmitProject.onclick = ()=>{
         form.style.display = 'none';
-        projectList.unshift(inProjectName.value);
+        projectList.unshift(new Project(inProjectName.value));
+        currentProject = projectList[0];
+        updateHeaderProject(currentProject);
         fillSidebar(projectList);
     };
     fillSidebar(projectList);
@@ -20,7 +26,11 @@ export function fillSidebar(projectList){
     }
     projectList.forEach(project => {
         let item = document.createElement('li');
-        item.innerHTML = project;
+        item.innerHTML = project.name;
         list.appendChild(item);
+        item.onclick=()=>{
+            updateHeaderProject(project);
+            updateTodoContainer(project.todos);
+        };
     });
 }
